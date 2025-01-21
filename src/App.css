@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", serif;
+}
+
+
+nav {
+  height: 70px;
+  background-color: rgb(79, 117, 240);
+}
+
+.container {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background-color: aqua; */
+}
+
+.event-container {
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.event-list-container { 
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+.event-card {
+  width: 270px;
+  height: 350px;
+  border: 0.5px solid rgb(217, 217, 217);
+  padding: 10px;
+  border-radius: 2px;
+  background-color: rgb(245, 245, 245);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.head {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+button {
+  width: 110px;
+  height: 35px;
+  outline: none;
+  cursor: pointer;
+  border: 0.5px solid rgb(217, 217, 217);
+  letter-spacing: 0.4px;
+  font-weight: 500;
+  border-radius: 2px;
+}
+.btn-view {
+  background-color: #fff;
+  border: 0.5px solid #d5d5d5;
+}
+.btn-book {
+  background-color: rgb(255, 61, 61);
+  color: #fff;
+  border: 0.5px solid rgb(248, 34, 34);;
+}
+
+.btn-view:hover {
+  background-color: #fcf9f9;
+}
+.btn-book:hover {
+  background-color: rgb(248, 34, 34);
+}
+
+.event-poster {
+  height: 70%;
+  width: 100%;
+}
+.event-title {
+  font-size: 16px;
+  margin: 2px 0px;
+}
+
+.ticket-text {
+  font-size: 14px;
+}
+
+.modal-head{
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 50px;
+}
+
+
+.ticket-selection {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.ticket-button {
+  height: 80px;
+  border: 0.5px solid rgb(255, 255, 255);
+  outline: none;
+}
+
+.selected-ticket-count{
+  font-size: 18px;
+  font-weight: 500;
+  margin: 40px 0px;
+}
+
+
+.ticket-booked-button {
+  width: 200px;
+  height: 45px;
+  background-color: rgb(255, 61, 61);
+  color: #fff;
+}
+
+.ticket-booked-button:hover {
+  background-color: rgb(252, 46, 46);
+}
+
+.ticket-selected {
+  background-color: rgb(255, 61, 61);
+  color: #fff;
+ font-weight: 600;
+}
+
+.banner {
+  width: 100%;
+  height: 350px;
+  border-radius: 5px;
+  background-color: #eeeeee;
+}
+
+.event-title-lg {
+  font-size: 46px;
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+} 
+
+.date {
+  margin-left: 30px;
+  border: 0.5px solid #e7e7e7;
+  background-color: #f1f1f1;
+  font-size: 20px;
+  padding: 10px 20px;
+  color: #3c3a3a;
+}
+
+.event-detail-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.book-btn-lg {
+  width: 250px;
+  height: 50px;
+  background-color: rgb(255, 61, 61);
+  color: #fff;
+  border: 0.5px solid rgb(248, 34, 34);
+  font-size: 18px;
+}
+
+.book-btn-lg:hover {
+ background-color: rgb(247, 36, 36);
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 20px 0px;
+
+  span {
+    font-weight: 400;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.show-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.success-img {
+  width: 70%;
+  margin-top: 40px;
+}
+
+.success-text {
+  font-size: 20px;
+  margin: 40px 0px;
+  font-weight: 600;
+
+  span {
+    color:rgb(247, 36, 36)
+  }
+}
+
+.red-alert {
+  padding: 2px 10px;
+  background-color: #fff7f7;
+  color:rgb(247, 36, 36);
+  border: 0.5px solid rgb(247, 36, 36);
+  margin-bottom: 10px;
+
+}
