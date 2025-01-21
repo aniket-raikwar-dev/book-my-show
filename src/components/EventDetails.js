@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { events } from "../data";
 import TicketBookingModal from "./TicketBookingModal";
 
 const EventDetails = () => {
   const { id } = useParams();
-  const event = events.find((e) => e.id === parseInt(id));
+  const [eventsData, setEventsData] = useState([]);
+  const [event, setEvent] = useState(null);
   const [isTicketBooked, setIsTicketBooked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTickets, setSelectedTickets] = useState(0);
@@ -26,13 +26,30 @@ const EventDetails = () => {
 
   const handleBookTickets = () => {
     if (event.tickets >= selectedTickets) {
-      event.tickets -= selectedTickets;
+      const updatedEvents = eventsData.map((e) =>
+        e.id === event.id ? { ...e, tickets: e.tickets - selectedTickets } : e
+      );
+      setEventsData(updatedEvents);
+      localStorage.setItem("eventsData", JSON.stringify(updatedEvents));
       setIsTicketBooked(true);
       setTimeout(() => {
         setIsModalOpen(false);
       }, 2000);
     }
   };
+
+  useEffect(() => {
+    const storedEvents = localStorage.getItem("eventsData");
+    const events = storedEvents ? JSON.parse(storedEvents) : [];
+    setEventsData(events);
+  }, []);
+
+  useEffect(() => {
+    if (eventsData.length > 0) {
+      const currentEvent = eventsData.find((e) => e.id === parseInt(id));
+      setEvent(currentEvent);
+    }
+  }, [eventsData, id]);
 
   return (
     <div className="container">
@@ -48,19 +65,19 @@ const EventDetails = () => {
 
           <div className="event-detail-head">
             <div className="event-title-lg">
-              {event.name}
-              <span className="date">{event.date}</span>
-              <span className="date">{event.time}</span>
+              {event?.name}
+              <span className="date">{event?.date}</span>
+              <span className="date">{event?.time}</span>
             </div>
             <button onClick={showModal} className="book-btn-lg">
               Book Tickets
             </button>
           </div>
           <p className="text">
-            Venue: <span>{event.venue}</span>
+            Venue: <span>{event?.venue}</span>
           </p>
           <p className="text">
-            Tickets Available: <span>{event.tickets}</span>
+            Tickets Available: <span>{event?.tickets}</span>
           </p>
 
           <p className="text">

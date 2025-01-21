@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { events } from "../data";
+import React, { useState, useEffect } from "react";
+import { events as initialEvents } from "../data";
 import { Link } from "react-router-dom";
 import TicketBookingModal from "./TicketBookingModal";
 
 const EventList = () => {
-  const [eventsData, setEventsData] = useState(events);
+  const [eventsData, setEventsData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTickets, setSelectedTickets] = useState(0);
   const [currentEvent, setCurrentEvent] = useState(null);
@@ -33,12 +33,23 @@ const EventList = () => {
           : event
       );
       setEventsData(updatedEvents);
+      localStorage.setItem("eventsData", JSON.stringify(updatedEvents));
       setIsTicketBooked(true);
       setTimeout(() => {
         setIsModalOpen(false);
       }, 2000);
     }
   };
+
+   useEffect(() => {
+     const storedEvents = localStorage.getItem("eventsData");
+     if (storedEvents) {
+       setEventsData(JSON.parse(storedEvents));
+     } else {
+       setEventsData(initialEvents);
+       localStorage.setItem("eventsData", JSON.stringify(initialEvents));
+     }
+   }, []);
 
   return (
     <div className="container">
